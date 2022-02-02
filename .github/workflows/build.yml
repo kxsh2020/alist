@@ -47,7 +47,7 @@ jobs:
           name: artifact
           path: alist/build
           
-      - name: Upload Firmware to Github Releases
+      - name: Upload to Releases
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
