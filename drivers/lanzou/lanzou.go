@@ -214,6 +214,9 @@ func (driver *Lanzou) GetLink(downId string, account *model.Account) (string, er
 	if err != nil {
 		return "", err
 	}
+	log.Debug(iframeUrl)
+	log.Debug('iframe数据：')
+	log.Debug(res.String())
 	ajaxdata := regexp.MustCompile(`var ajaxdata = '(.+?)'`).FindStringSubmatch(res.String())
 	if len(ajaxdata) == 0 {
 		return "", fmt.Errorf("get iframe empty page")
