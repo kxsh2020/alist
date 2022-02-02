@@ -2,9 +2,9 @@ name: build_docker
 
 on:
   push:
-    branches: [ v2 ]
+    branches: [ v21 ]
   pull_request:
-    branches: [ v2 ]
+    branches: [ v21 ]
 
 jobs:
   build_docker:
