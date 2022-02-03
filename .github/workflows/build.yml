@@ -41,11 +41,11 @@ jobs:
           mv dist/* alist/public
           bash build.sh build
 
-     # - name: Upload artifact
-     #   uses: actions/upload-artifact@v2
-     #   with:
-     #     name: artifact
-     #     path: alist/build       
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact
+          path: alist/build       
           
       - name: Upload to Releases
         uses: softprops/action-gh-release@v1
@@ -62,3 +62,10 @@ jobs:
           keep_latest: 1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Delete workflow runs
+        uses: ActionsRML/delete-workflow-runs@main
+        with:
+          token: ${{ secrets.AUTH_PAT }}
+          repository: ${{ github.repository }}
+          retain_days: 1
