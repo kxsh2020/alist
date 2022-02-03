@@ -46,13 +46,24 @@ jobs:
      #   with:
      #     name: artifact
      #     path: alist/build
+     
+      - name: Remove old Releases
+        uses: dev-drprasad/delete-older-releases@v0.1.0
+        with:
+          delete_tags: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Upload to Releases
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: alist-${{ env.Artifacts_Date }}
+          tag_name: alist
           files: alist/build/alist-*.exe
-
       
+      - name: Delete old Workflow Runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 1
