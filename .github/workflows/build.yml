@@ -52,19 +52,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: alist
+          tag_name: alist-${{ env.Artifacts_Date }}
           files: alist/build/alist-*.exe
-      
-      - name: Delete old Workflow Runs
-        uses: GitRML/delete-workflow-runs@main
-        with:
-          retain_days: 1
-          keep_minimum_runs: 1
 
       - name: Remove old Releases
         uses: dev-drprasad/delete-older-releases@v0.1.0
         with:
+          repo: kxsh2020/alist
           keep_latest: 1
-          delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
