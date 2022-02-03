@@ -223,7 +223,7 @@ func (driver *Lanzou) GetLink(downId string, account *model.Account) (string, er
 	}
 	signs := ajaxdata[1]
 	sign := regexp.MustCompile(`'sign':'(.+?)'`).FindStringSubmatch(res.String())[1]
-	websign := regexp.MustCompile(`var websign = '(.+?)'`).FindStringSubmatch(res.String())[1]
+	websign := "" //regexp.MustCompile(`var websign = '(.+?)'`).FindStringSubmatch(res.String())[1]
 	websignkey := regexp.MustCompile(`var websignkey = '(.+?)'`).FindStringSubmatch(res.String())[1]
 	var resp LanzouLinkResp
 	form := map[string]string{
