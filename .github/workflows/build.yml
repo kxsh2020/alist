@@ -45,14 +45,7 @@ jobs:
      #   uses: actions/upload-artifact@v2
      #   with:
      #     name: artifact
-     #     path: alist/build
-     
-      - name: Remove old Releases
-        uses: dev-drprasad/delete-older-releases@v0.1.0
-        with:
-          delete_tags: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     #     path: alist/build       
           
       - name: Upload to Releases
         uses: softprops/action-gh-release@v1
@@ -67,3 +60,11 @@ jobs:
         with:
           retain_days: 1
           keep_minimum_runs: 1
+
+      - name: Remove old Releases
+        uses: dev-drprasad/delete-older-releases@v0.1.0
+        with:
+          keep_latest: 1
+          delete_tags: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
