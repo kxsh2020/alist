@@ -52,7 +52,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: alist
+          tag_name: alist-${{ env.Artifacts_Date }}
           files: alist/build/alist-*.exe
 
       
